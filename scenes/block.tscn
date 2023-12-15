@@ -1,0 +1,91 @@
+[gd_scene load_steps=5 format=3 uid="uid://duap3slnvvl57"]
+
+[ext_resource type="Texture2D" uid="uid://bhv3pjwr43t0m" path="res://assets/arrmor.png" id="1_oa052"]
+[ext_resource type="Script" path="res://scenes/blockbuild.gd" id="1_t0ll5"]
+[ext_resource type="AudioStream" uid="uid://bcfdvrvuyyhxq" path="res://addons/kenney_interface_sounds/bong_001.wav" id="3_wno7t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t8mxp"]
+size = Vector2(3, 3)
+
+[node name="Block" type="Sprite2D"]
+texture_filter = 1
+texture = ExtResource("1_oa052")
+script = ExtResource("1_t0ll5")
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+
+[node name="Edge" type="Area2D" parent="."]
+position = Vector2(-5, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Edge"]
+shape = SubResource("RectangleShape2D_t8mxp")
+
+[node name="ColorRect" type="ColorRect" parent="Edge"]
+visible = false
+offset_left = -1.0
+offset_top = -2.0
+offset_right = 39.0
+offset_bottom = 38.0
+scale = Vector2(0.0800008, 0.0800008)
+color = Color(0, 1, 0, 1)
+
+[node name="Edge2" type="Area2D" parent="."]
+position = Vector2(0, -5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Edge2"]
+shape = SubResource("RectangleShape2D_t8mxp")
+
+[node name="ColorRect" type="ColorRect" parent="Edge2"]
+visible = false
+offset_left = -1.0
+offset_top = -2.0
+offset_right = 39.0
+offset_bottom = 38.0
+scale = Vector2(0.0800008, 0.0800008)
+color = Color(0, 1, 0, 1)
+
+[node name="Edge3" type="Area2D" parent="."]
+position = Vector2(5, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Edge3"]
+shape = SubResource("RectangleShape2D_t8mxp")
+
+[node name="ColorRect" type="ColorRect" parent="Edge3"]
+visible = false
+offset_left = -1.0
+offset_top = -2.0
+offset_right = 39.0
+offset_bottom = 38.0
+scale = Vector2(0.0800008, 0.0800008)
+color = Color(0, 1, 0, 1)
+
+[node name="Edge4" type="Area2D" parent="."]
+position = Vector2(0, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Edge4"]
+shape = SubResource("RectangleShape2D_t8mxp")
+
+[node name="ColorRect" type="ColorRect" parent="Edge4"]
+visible = false
+offset_left = -1.0
+offset_top = -2.0
+offset_right = 39.0
+offset_bottom = 38.0
+scale = Vector2(0.0800008, 0.0800008)
+color = Color(0, 1, 0, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_wno7t")
+volume_db = 1.0
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[connection signal="area_entered" from="Edge" to="." method="_on_edge_area_entered"]
+[connection signal="area_entered" from="Edge2" to="." method="_on_edge_2_area_entered"]
+[connection signal="area_entered" from="Edge3" to="." method="_on_edge_3_area_entered"]
+[connection signal="area_entered" from="Edge4" to="." method="_on_edge_4_area_entered"]
